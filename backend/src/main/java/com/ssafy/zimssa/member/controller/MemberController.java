@@ -50,7 +50,7 @@ public class MemberController {
 
 	@PutMapping("/update/{id}")
 	public ResponseEntity<Member> update(@PathVariable("id") String id,@RequestBody Member member) throws Exception {
-		log.info("udpate controller>>>>>>>>>>>>>>>>>>>>>>> join controller");
+		log.info("udpate controller>>>>>>>>>>>>>>>>>>>>>>> update controller");
 
 	
 		member.setId(id);

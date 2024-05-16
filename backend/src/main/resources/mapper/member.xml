@@ -27,6 +27,7 @@
 
 	<update id="update" parameterType="member">
 		Update members 
+		
 		set user_password = #{password},
 		user_name = #{name},
 		email_id = #{emailId},
