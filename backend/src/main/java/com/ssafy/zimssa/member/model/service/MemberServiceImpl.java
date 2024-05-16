@@ -33,6 +33,15 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
+	public void update(Member member) throws Exception {
+		
+		
+		
+		memberMapper.update(member);
+		
+	}
+	
+	@Override
 	public Member userInfo(String userId) throws Exception {
 		return memberMapper.userInfo(userId);
 	}
@@ -57,6 +66,8 @@ public class MemberServiceImpl implements MemberService{
 		map.put("token", null);
 		memberMapper.deleteRefreshToken(map);
 	}
+
+
 
 	
 }
