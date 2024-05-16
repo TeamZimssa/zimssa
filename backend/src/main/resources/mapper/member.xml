@@ -16,6 +16,8 @@
 
 
 
+
+
 	<select id="login" parameterType="map" resultMap="member">
 		select user_id, user_name, token
 		from members

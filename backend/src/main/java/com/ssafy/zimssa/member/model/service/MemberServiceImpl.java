@@ -25,6 +25,10 @@ public class MemberServiceImpl implements MemberService{
 		this.memberMapper = memberMapper;
 	}
 
+	
+	
+	
+	
 	@Override
 	public Member login(Member member) throws Exception {
 		return memberMapper.login(member);
