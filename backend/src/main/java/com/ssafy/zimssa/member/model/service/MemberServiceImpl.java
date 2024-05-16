@@ -16,6 +16,9 @@ public class MemberServiceImpl implements MemberService{
 
 	private MemberMapper memberMapper;
 
+	
+	
+	
 	public MemberServiceImpl(MemberMapper memberMapper) {
 		super();
 		

@@ -59,6 +59,8 @@ public class MemberController {
 		return new ResponseEntity<Member>(HttpStatus.OK);
 	}
 
+	
+	
 	@Operation(summary = "로그인", description = "아이디와 비밀번호를 이용하여 로그인 처리.")
 	@PostMapping("/login")
 	public ResponseEntity<Map<String, Object>> login(

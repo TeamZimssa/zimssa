@@ -10,6 +10,7 @@ public interface MemberService {
 	Member userInfo(String id) throws Exception;
 	
 	
+	
 	void saveRefreshToken(String id, String refreshToken) throws Exception;
 	Object getRefreshToken(String id) throws Exception;
 	void deleRefreshToken(String id) throws Exception;
