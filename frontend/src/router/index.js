@@ -69,6 +69,7 @@ const router = createRouter({
         // },
       ],
     },
+
     {
       path: "/board",
       name: "board",
