@@ -63,6 +63,8 @@ const router = createRouter({
           component: () => import("@/components/users/UserMyPage.vue"),
         },
         {
+
+          
           path: "mypage/edit-user", // Add this route
           name: "EditUser",
           beforeEnter: onlyAuthUser,
@@ -75,6 +77,7 @@ const router = createRouter({
         // },
       ],
     },
+
     {
       path: "/board",
       name: "board",
