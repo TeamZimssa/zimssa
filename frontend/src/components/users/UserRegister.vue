@@ -13,6 +13,7 @@ const custom_email_domain = ref('');
 
 const router = useRouter();
 
+
 const join = async () => {
   if (password.value !== pwdcheck.value) {
     alert('비밀번호가 일치하지 않습니다.');
