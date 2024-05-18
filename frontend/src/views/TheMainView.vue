@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-  <div>index page</div>
+  <div>Main 화면 입니다.</div>
 </template>
 
 <style scoped></style>
