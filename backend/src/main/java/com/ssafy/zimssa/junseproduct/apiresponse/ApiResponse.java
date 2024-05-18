@@ -1,4 +1,4 @@
-package com.ssafy.zimssa.dataapi;
+package com.ssafy.zimssa.junseproduct.apiresponse;
 
 import lombok.Data;
 
