@@ -6,7 +6,8 @@ async function userConfirm(param, success, fail) {
   console.log("!!! param")
   console.log("param:"+param)
   await local.post(`/user/login`, param).then(success).catch(fail);
-}
+}   
+  
 
 async function findById(id, success, fail) {
   local.defaults.headers["Authorization"] = sessionStorage.getItem("accessToken");

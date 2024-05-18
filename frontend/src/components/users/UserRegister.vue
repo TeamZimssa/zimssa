@@ -10,6 +10,7 @@ const email_id = ref('');
 const email_domain = ref('선택');
 const custom_email_domain = ref('');
 
+
 const router = useRouter();
 
 const join = async () => {

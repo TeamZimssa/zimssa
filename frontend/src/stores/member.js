@@ -125,6 +125,7 @@ export const useMemberStore = defineStore("memberStore", () => {
           sessionStorage.removeItem("accessToken")
           sessionStorage.removeItem("refreshToken")
         } else {
+          
           console.error("유저 정보 없음!!!!")
         }
       },

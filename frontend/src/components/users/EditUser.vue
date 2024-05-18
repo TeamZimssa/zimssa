@@ -13,6 +13,7 @@
         <label for="emailId">이메일 아이디:</label>
         <input type="text" id="emailId" v-model="user.emailId">
       </div>
+      
       <div>
         <label for="emailDomain">이메일 도메인:</label>
         <input type="text" id="emailDomain" v-model="user.emailDomain">
