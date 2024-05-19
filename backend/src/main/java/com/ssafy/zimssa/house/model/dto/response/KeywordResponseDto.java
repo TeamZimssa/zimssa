@@ -1,4 +1,4 @@
-package com.ssafy.zimssa.housefilter.model.dto.response;
+package com.ssafy.zimssa.house.model.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

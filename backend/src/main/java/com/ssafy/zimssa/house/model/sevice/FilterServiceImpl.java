@@ -1,10 +1,10 @@
-package com.ssafy.zimssa.housefilter.model.sevice;
+package com.ssafy.zimssa.house.model.sevice;
 
-import com.ssafy.zimssa.housefilter.model.dto.GuDong;
-import com.ssafy.zimssa.housefilter.model.dto.request.KeywordRequestDto;
-import com.ssafy.zimssa.housefilter.model.dto.response.GuDongResponseDto;
-import com.ssafy.zimssa.housefilter.model.dto.response.KeywordResponseDto;
-import com.ssafy.zimssa.housefilter.model.mapper.FilterMapper;
+import com.ssafy.zimssa.house.model.dto.GuDong;
+import com.ssafy.zimssa.house.model.dto.request.KeywordRequestDto;
+import com.ssafy.zimssa.house.model.dto.response.GuDongResponseDto;
+import com.ssafy.zimssa.house.model.dto.response.KeywordResponseDto;
+import com.ssafy.zimssa.house.model.mapper.FilterMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

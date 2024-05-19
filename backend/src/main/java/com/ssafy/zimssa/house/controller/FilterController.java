@@ -1,9 +1,9 @@
-package com.ssafy.zimssa.housefilter.controller;
+package com.ssafy.zimssa.house.controller;
 
-import com.ssafy.zimssa.housefilter.model.dto.request.KeywordRequestDto;
-import com.ssafy.zimssa.housefilter.model.dto.response.GuDongResponseDto;
-import com.ssafy.zimssa.housefilter.model.dto.response.KeywordResponseDto;
-import com.ssafy.zimssa.housefilter.model.sevice.FilterService;
+import com.ssafy.zimssa.house.model.dto.request.KeywordRequestDto;
+import com.ssafy.zimssa.house.model.dto.response.GuDongResponseDto;
+import com.ssafy.zimssa.house.model.dto.response.KeywordResponseDto;
+import com.ssafy.zimssa.house.model.sevice.FilterService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,12 +13,12 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/house-filter")
+@RequestMapping("/house")
 public class FilterController {
 
     private final FilterService filterService;
 
-    @GetMapping()
+    @GetMapping("/searchGuDong")
     public ResponseEntity<List<GuDongResponseDto>> searchGuDong() {
         List<GuDongResponseDto> response = filterService.findAllGuDong();
         return new ResponseEntity<>(response, HttpStatus.OK);
@@ -30,4 +30,5 @@ public class FilterController {
         List<KeywordResponseDto> response = filterService.findAllAptByKeyword(keywordDto);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+
 }
