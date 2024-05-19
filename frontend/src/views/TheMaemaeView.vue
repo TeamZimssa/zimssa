@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted, watch } from "vue";
 import { debounce } from "lodash";
-import { searchKeyword, getDongData } from "@/api/maemae"; // 서버 API 함수들
+import { searchKeyword, getDongData, getApartmentData } from "@/api/maemae"; // 서버 API 함수들
 
 const map = ref(null);
 const markers = ref([]);
@@ -11,20 +11,12 @@ const selectedDong = ref(null);
 
 const center = ref({ lat: 37.5665, lng: 126.978 }); // 초기 지도 중심 (서울시청 기준)
 
-// 환경 변수에서 카카오 맵 API 키를 가져옵니다
-const KAKAO_MAP_SERVICE_KEY = import.meta.env.VITE_KAKAO_MAP_SERVICE_KEY;
-
 const loadKakaoMapScript = () => {
   return new Promise((resolve, reject) => {
     if (window.kakao && window.kakao.maps) {
       resolve();
       return;
     }
-    const script = document.createElement("script");
-    script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${KAKAO_MAP_SERVICE_KEY}&libraries=services`;
-    script.onload = () => resolve();
-    script.onerror = () => reject(new Error("Kakao Map script loading error"));
-    document.head.appendChild(script);
   });
 };
 
@@ -56,9 +48,8 @@ const addEventListeners = () => {
 
 const updateMarkers = async () => {
   clearMarkers();
-  // 가짜 데이터로 대체
-  const markersData = [{ lat: 37.5665, lng: 126.978, name: "Sample Dong" }];
-  displayMarkers(markersData);
+  const data = await getApartmentData(selectedDong.value.id, selectedDong.value.name);
+  displayMarkers(data);
 };
 
 const clearMarkers = () => {
@@ -68,14 +59,14 @@ const clearMarkers = () => {
 
 const displayMarkers = (markersData) => {
   markersData.forEach((data) => {
-    const position = new kakao.maps.LatLng(data.lat, data.lng);
+    const position = new kakao.maps.LatLng(data.latitude, data.longitude);
     const marker = new kakao.maps.Marker({
       position,
       map: map.value,
     });
 
     kakao.maps.event.addListener(marker, "click", () => {
-      handleSelectDong(data);
+      // handle marker click if needed
     });
 
     markers.value.push(marker);
@@ -130,7 +121,7 @@ onMounted(async () => {
       <input
         v-model="searchQuery"
         type="text"
-        placeholder="동 이름 검색"
+        placeholder="동 이름 또는 아파트 이름 검색"
         style="padding: 8px; font-size: 16px"
       />
       <div
@@ -139,12 +130,12 @@ onMounted(async () => {
       >
         <ul>
           <li
-            v-for="dong in searchResults"
-            :key="dong.id"
-            @click="handleSelectDong(dong)"
+            v-for="result in searchResults"
+            :key="result.id"
+            @click="handleSelectDong(result)"
             style="padding: 8px; cursor: pointer"
           >
-            {{ dong.name }}
+            {{ result.name }}
           </li>
         </ul>
       </div>

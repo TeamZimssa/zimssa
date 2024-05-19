@@ -1,7 +1,7 @@
-package com.ssafy.zimssa.jeonse.controller;
+package com.ssafy.zimssa.maemae.controller;
 
-import com.ssafy.zimssa.jeonse.model.dto.response.JeonseResponseDto;
-import com.ssafy.zimssa.jeonse.model.service.JeonseService;
+import com.ssafy.zimssa.maemae.model.dto.response.MaemaeResponseDto;
+import com.ssafy.zimssa.maemae.model.service.MaemaeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,16 +14,16 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/jeonse")
-public class JeonseController {
+@RequestMapping("/maemae")
+public class MaemaeController {
 
-    private final JeonseService jeonseService;
+    private final MaemaeService maaemaeService;
 
     @GetMapping("/search-apt")
-    public ResponseEntity<List<JeonseResponseDto>> searchAllByGuDong(
+    public ResponseEntity<List<MaemaeResponseDto>> searchAllByGuDong(
             @RequestParam(name = "gunCode") String sggCd,
             @RequestParam(name = "dongCode", required = false) String bjdongCd) {
-        List<JeonseResponseDto> response = bjdongCd == null ? jeonseService.findAllByGu(sggCd) : jeonseService.findAllByDong(sggCd, bjdongCd);
+        List<MaemaeResponseDto> response = bjdongCd == null ? maaemaeService.findAllByGu(sggCd) : maaemaeService.findAllByDong(sggCd, bjdongCd);
 
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
