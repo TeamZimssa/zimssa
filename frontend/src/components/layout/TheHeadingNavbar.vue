@@ -11,7 +11,6 @@ const memberStore = useMemberStore();
 const { menuList } = storeToRefs(menuStore);
 const { changeMenuState } = menuStore;
 
-
 const { userLogout } = memberStore;
 
 const logout = () => {

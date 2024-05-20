@@ -11,7 +11,10 @@ import TheHeadingNavbar from "@/components/layout/TheHeadingNavbar.vue";
 </template>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> main
+=======
+>>>>>>> origin
 <style scoped></style>

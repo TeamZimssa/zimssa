@@ -9,6 +9,7 @@ import com.ssafy.zimssa.junseproduct.model.service.JunseService;
 import java.io.UnsupportedEncodingException;
 
 import org.springframework.http.HttpStatus;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -42,6 +43,7 @@ public class JunseProductController {
 	    private final String serviceKey = "?serviceKey=sEzAWExEPqyBjnP5C/tf28HWGYMkG1SfSGQb6mXqcZZVkYY0krdnzRZtaUqoqF6vrJwHPPaNRWmsYtigkd4v8A==";
         private final String DETAILINFO_URL= "/jnse-prod-dtl-info";
 
+
     @GetMapping("/junse/list/{userId}")
     public ResponseEntity<JunseInfoResponseDto> list(@PathVariable("userId") String userId) throws Exception {
         System.out.println("list get>>>>>>>>>>>>>>>>>");
@@ -59,6 +61,7 @@ public class JunseProductController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
 
     @PostMapping("/junse/{userId}")
     public ResponseEntity<JunseInfoResponseDto> fetchDataFromAPI(@PathVariable String userId, @RequestBody JunseUserInfoDto userInfoDto) throws Exception {
