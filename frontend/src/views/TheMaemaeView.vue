@@ -1,6 +1,10 @@
 <script setup>
+<<<<<<< HEAD
 import { ref, onMounted, watch, computed } from "vue";
 import { debounce } from "lodash";
+=======
+import { ref, onMounted, watch } from "vue";
+>>>>>>> main
 import { searchByKeyword, getDetail } from "@/api/house"; // 서버 API 함수들
 
 const map = ref(null);
@@ -9,8 +13,11 @@ const searchQuery = ref("");
 const searchResults = ref([]);
 const selectedApartment = ref(null);
 const selectedApartmentDetails = ref([]);
+<<<<<<< HEAD
 const showSearchResults = ref(true);
 const selectedArea = ref("전체");
+=======
+>>>>>>> main
 
 const center = ref({ lat: 37.5665, lng: 126.978 }); // 초기 지도 중심 (서울시청 기준)
 const roadViewContainer = ref(null);
@@ -87,7 +94,7 @@ const displayMarkers = (markersData) => {
   });
 };
 
-const handleSearch = debounce(async () => {
+const handleSearch = async () => {
   if (searchQuery.value.trim() !== "") {
     try {
       searchResults.value = await searchByKeyword("maemae_info", searchQuery.value);

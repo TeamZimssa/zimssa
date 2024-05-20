@@ -69,11 +69,7 @@ const router = createRouter({
           beforeEnter: onlyAuthUser,
           component: () => import("@/components/users/EditUser.vue"),
         },
-        // {
-        //   path: "modify/:userid",
-        //   name: "user-modify",
-        //   component: () => import("@/components/users/UserModify.vue"),
-        // },
+     
       ],
     },
 
@@ -117,12 +113,7 @@ const router = createRouter({
       name: "junseproduct",
       component: TheJunseProductView,
     },
-    {
-      path: "/todos",
-      name: "todos",
-      beforeEnter: onlyAuthUser,
-      component: () => import("@/views/TheTodoView.vue"),
-    },
+  
   ],
 });
 
