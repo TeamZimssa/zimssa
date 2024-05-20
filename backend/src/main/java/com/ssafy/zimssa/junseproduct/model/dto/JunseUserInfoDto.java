@@ -9,7 +9,7 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @ToString
-public class UserInfoDto {
+public class JunseUserInfoDto {
 
 
 	public String rentGrntAmt; // 임차보증금액
@@ -21,8 +21,8 @@ public class UserInfoDto {
 	public String ownHsCnt; // 주택보유수
 	public String grntPrmeActnDvcdCont; //보증 우대 조치 구분 (01: 2자녀이상 02: 다문화가정 03: 한부모가구 등)
 
-	public UserInfoDto(String rentGrntAmt, String trgtLwdgCd, String age, String weddStcd, String myIncmAmt,
-					   String myTotDebtAmt, String ownHsCnt, String grntPrmeActnDvcdCont) {
+	public JunseUserInfoDto(String rentGrntAmt, String trgtLwdgCd, String age, String weddStcd, String myIncmAmt,
+							String myTotDebtAmt, String ownHsCnt, String grntPrmeActnDvcdCont) {
 		this.rentGrntAmt = rentGrntAmt;
 		this.trgtLwdgCd = trgtLwdgCd;
 		this.age = age;

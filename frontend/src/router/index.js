@@ -3,6 +3,7 @@ import TheMainView from "../views/TheMainView.vue";
 // import TheBoardView from "../views/TheBoardView.vue";
 
 import { storeToRefs } from "pinia";
+import TheJunseProductView from "@/views/TheJunseProductView.vue"; // 새로운 뷰 추가
 
 import { useMemberStore } from "@/stores/member";
 
@@ -63,8 +64,6 @@ const router = createRouter({
           component: () => import("@/components/users/UserMyPage.vue"),
         },
         {
-
-          
           path: "mypage/edit-user", // Add this route
           name: "EditUser",
           beforeEnter: onlyAuthUser,
@@ -112,6 +111,11 @@ const router = createRouter({
           component: () => import("@/components/boards/BoardModify.vue"),
         },
       ],
+    },
+    {
+      path: "/junseproduct",
+      name: "junseproduct",
+      component: TheJunseProductView,
     },
     {
       path: "/todos",

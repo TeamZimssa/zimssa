@@ -4,25 +4,27 @@ import com.ssafy.zimssa.junseproduct.apiresponse.ApiResponse;
 import com.ssafy.zimssa.junseproduct.model.dto.JunseInfoResponseDto;
 import com.ssafy.zimssa.junseproduct.apiresponse.JunseProductApiResponse;
 import com.ssafy.zimssa.junseproduct.model.dto.JunseProductDto;
-import com.ssafy.zimssa.junseproduct.model.dto.UserInfoDto;
+import com.ssafy.zimssa.junseproduct.model.dto.JunseUserInfoDto;
 import com.ssafy.zimssa.junseproduct.model.service.JunseService;
 import java.io.UnsupportedEncodingException;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @Slf4j
-public class JunseController {
+@RequestMapping("/junseproduct")
+public class JunseProductController {
 	
 
 	  private final RestTemplate restTemplate = new RestTemplate();
@@ -30,7 +32,7 @@ public class JunseController {
 
         private final JunseService junseService;
 
-    public JunseController(JunseService junseService) {
+    public JunseProductController(JunseService junseService) {
         this.junseService = junseService;
     }
 
@@ -40,10 +42,11 @@ public class JunseController {
         private final String DETAILINFO_URL= "/jnse-prod-dtl-info";
 
 
-    @PostMapping("/junse")
-    public ResponseEntity<JunseInfoResponseDto> fetchDataFromAPI(@RequestBody UserInfoDto userInfoDto) throws Exception {
-    	
+    @PostMapping("/junse/{userId}")
+    public ResponseEntity<JunseInfoResponseDto> fetchDataFromAPI(@PathVariable String userId, @RequestBody JunseUserInfoDto userInfoDto) throws Exception {
+        // 메서드 본문 내용은 변경하지 않고 사용자의 아이디를 추가로 받아서 처리합니다.
         // API 엔드포인트 및 파라미터 설정
+        System.out.println(userInfoDto);
     	String url = makeUrl(userInfoDto);
 
         // API 호출 및 데이터 수신
@@ -106,9 +109,12 @@ public class JunseController {
                     item.getExptGrfeRateCont(),
                     item.getGuidUrl(),
                     item.getGrntReqTrgtDvcd(),
-                    item.getTrtBankCont()
+                    item.getTrtBankCont(),
+                    userId
             );        }
         // ResponseEntity 반환
+        System.out.println("!!!!!!");
+        System.out.println(junseInfoResponseDto);
         junseService.save(junseInfoResponseDto);
         if (junseInfoResponseDto != null) {
             return ResponseEntity.ok(junseInfoResponseDto);
@@ -120,9 +126,14 @@ public class JunseController {
         
         
     }
-    
+//    @GetMapping("/list/{userId")
+//    public ResponseEntity<String > list(@PathVariable String userId)
+//    {
+//
+//    }
+//
 
-    private String makeUrl (UserInfoDto userInfoDto) throws UnsupportedEncodingException {
+    private String makeUrl (JunseUserInfoDto userInfoDto) throws UnsupportedEncodingException {
     	
 
     	//UserInfoDto userInfoDto = new UserInfoDto("JSON","1","1","200000000","2629000000","22","1","40000000","10000000","1","01");
