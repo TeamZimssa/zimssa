@@ -56,8 +56,8 @@
         FROM
             maemae_info
         WHERE
-            bldg_nm LIKE CONCAT('%', #{dongName}, '%')
-            AND api_building_name LIKE CONCAT('%', #{aptName}, '%')
+            bjdong_nm = #{dongName}
+            AND api_building_name = #{aptName}
         ORDER BY
             deal_ymd DESC;
     </select>
@@ -86,8 +86,8 @@
         FROM
             jeonse_info
         WHERE
-            bldg_nm LIKE CONCAT('%', #{dongName}, '%')
-            AND api_building_name LIKE CONCAT('%', #{aptName}, '%')
+            bjdong_nm = #{dongName}
+            AND api_building_name = #{aptName}
         ORDER BY
             cntrct_de DESC;
     </select>
