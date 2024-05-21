@@ -20,10 +20,15 @@ const logout = () => {
 </script>
 
 <template>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top navClass">
     <div class="container-fluid">
       <router-link :to="{ name: 'main' }" class="navbar-brand">
-        <img src="@/assets/ssafy_logo.png" class="rounded mx-auto d-block" alt="..." />
+        <img
+          src="@/assets/ssafy_logo.png"
+          class="rounded mx-auto d-block"
+          alt="..."
+          style="height: 13vh"
+        />
       </router-link>
       <button
         class="navbar-toggler"
@@ -47,8 +52,7 @@ const logout = () => {
           <li class="nav-item">
             <router-link :to="{ name: 'jeonse' }" class="nav-link">전월세 실거래가</router-link>
           </li>
-         
-          
+
           <li class="nav-item">
             <router-link :to="{ name: 'board' }" class="nav-link">게시판</router-link>
           </li>
@@ -58,7 +62,7 @@ const logout = () => {
             >
           </li>
         </ul>
-       
+
         <ul
           class="navbar-nav ms-auto my-2 my-lg-0 navbar-nav-scroll"
           style="--bs-scroll-height: 100px"
@@ -87,4 +91,8 @@ const logout = () => {
   </nav>
 </template>
 
-<style scoped></style>
+<style scoped>
+.navClass {
+  height: 10vh;
+}
+</style>
