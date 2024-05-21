@@ -53,12 +53,12 @@
 			<version>1.0.5</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-mail -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-mail</artifactId>
 			<version>3.2.5</version>
 		</dependency>
+
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -134,8 +134,13 @@
     <artifactId>jackson-dataformat-xml</artifactId>
     <version>2.13.0</version> <!-- 버전은 프로젝트의 나머지 Jackson 라이브러리와 일치시키세요 -->
 </dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.5.13</version>
+		</dependency>
 
-		
+
 	</dependencies>
 
 	<build>
