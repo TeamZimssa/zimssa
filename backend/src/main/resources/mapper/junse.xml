@@ -68,6 +68,7 @@
             LIMIT 1;
 
     </select>
+<<<<<<< HEAD
 <!--=======-->
 <!--    INSERT INTO junse (-->
 <!--        rent_grant_max_loan_limit_rate,-->

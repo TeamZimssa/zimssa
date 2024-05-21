@@ -69,17 +69,12 @@ const router = createRouter({
           beforeEnter: onlyAuthUser,
           component: () => import("@/components/users/EditUser.vue"),
         },
-     
       ],
     },
 
     {
       path: "/board",
       name: "board",
-      // component: TheBoardView,
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import("../views/TheBoardView.vue"),
       redirect: { name: "article-list" },
       children: [
@@ -109,11 +104,15 @@ const router = createRouter({
       ],
     },
     {
+      path: "/news",
+      name: "news",
+      component: () => import("@/views/TheNewsView.vue"),
+    },
+    {
       path: "/junseproduct",
       name: "junseproduct",
       component: TheJunseProductView,
     },
-  
   ],
 });
 
