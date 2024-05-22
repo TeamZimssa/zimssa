@@ -57,7 +57,7 @@ const logout = () => {
               >전세보증상품 추천</router-link
             >
           </li>
-          <li class="nav-item">
+          <li>
             <router-link :to="{ name: 'board' }" class="nav-link">공지사항</router-link>
           </li>
           <li class="nav-item">
@@ -96,5 +96,9 @@ const logout = () => {
 <style scoped>
 .navClass {
   height: 10vh;
+}
+
+.container-fluid {
+  background-color: white;
 }
 </style>

@@ -27,11 +27,13 @@ const onlyAuthUser = async (to, from, next) => {
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+    
     {
       path: "/",
       name: "main",
       component: TheMainView,
     },
+    
     {
       path: "/maemae",
       name: "maemae",
@@ -71,7 +73,11 @@ const router = createRouter({
         },
       ],
     },
-
+    {
+      path: '/result',
+      name: 'ResultPage',
+      component:  () => import("@/components/Junseproduct/ResultPage.vue"),
+    },
     {
       path: "/board",
       name: "board",
@@ -86,19 +92,16 @@ const router = createRouter({
         {
           path: "view/:articleno",
           name: "article-view",
-          beforeEnter: onlyAuthUser,
           component: () => import("@/components/boards/BoardDetail.vue"),
         },
         {
           path: "write",
           name: "article-write",
-          beforeEnter: onlyAuthUser,
           component: () => import("@/components/boards/BoardWrite.vue"),
         },
         {
           path: "modify/:articleno",
           name: "article-modify",
-          beforeEnter: onlyAuthUser,
           component: () => import("@/components/boards/BoardModify.vue"),
         },
       ],

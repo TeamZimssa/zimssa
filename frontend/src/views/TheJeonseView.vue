@@ -593,18 +593,15 @@ onMounted(() => {
             </div>
             <ul class="apartment-details-list">
               <li class="apartment-details-header">
-                <span>타입</span>
                 <span>거래 날짜</span>
                 <span>면적</span>
                 <span>보증금</span>
-                <span>층</span>
               </li>
               <li
                 v-for="detail in filteredJeonseDetails"
-                :key="detail.dealDate + detail.area + detail.floor"
+                :key="detail.dealDate + detail.area"
                 class="apartment-detail-item"
               >
-                <span>{{ detail.dealType }}</span>
                 <span>{{ detail.dealDate }}</span>
                 <span>{{ detail.area }} ㎡</span>
                 <span
@@ -638,7 +635,7 @@ onMounted(() => {
               </li>
               <li
                 v-for="detail in filteredWolseDetails"
-                :key="detail.dealDate + detail.area + detail.floor"
+                :key="detail.dealDate + detail.area"
                 class="apartment-detail-item"
               >
                 <span>{{ detail.dealDate }}</span>
@@ -649,7 +646,6 @@ onMounted(() => {
                   }}
                   억원</span
                 >
-                <span>{{ detail.floor }}층</span>
               </li>
             </ul>
           </div>

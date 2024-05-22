@@ -553,11 +553,10 @@ onMounted(() => {
             <span>거래 날짜</span>
             <span>면적</span>
             <span>거래 가격</span>
-            <span>층</span>
           </li>
           <li
             v-for="detail in filteredDetails"
-            :key="detail.dealDate + detail.area + detail.floor"
+            :key="detail.dealDate + detail.area"
             class="apartment-detail-item"
           >
             <span>{{ detail.dealDate }}</span>
@@ -568,7 +567,6 @@ onMounted(() => {
               }}
               억원</span
             >
-            <span>{{ detail.floor }}층</span>
           </li>
         </ul>
       </div>
