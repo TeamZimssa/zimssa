@@ -28,7 +28,7 @@
         <button @click="sendQuestion">Send</button>
       </div>
     </div>
-    <button class="open-button" @click="togglePopup" v-if="!isOpen">부동산 AI Chat</button>
+    <button class="open-button" @click="togglePopup" v-if="!isOpen">부동산 AI Chat</button>
   </div>
 </template>
 
