@@ -12,6 +12,7 @@ import seniorMarkerImage from "@/assets/facilities/senior.png";
 import childMarkerImage from "@/assets/facilities/child.png";
 import impairmentMarkerImage from "@/assets/facilities/impairment.png";
 import homelessMarkerImage from "@/assets/facilities/homeless.png";
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 const map = ref(null);
 const markers = ref([]);
@@ -352,9 +353,9 @@ const displayMarkers = (markersData) => {
   });
 
   const content = `
-    <div class="info-window">
-      <div class="info-title">${selectedApartment.value.aptName}</div>
-      <div class="info-price">${priceStats.value.min} 억 ~ ${priceStats.value.max} 억</div>
+    <div style="background-color: #ad88c6; text-align: center; padding: 10px; white-space: nowrap; border-radius: 8px;">
+      <div style="font-weight: bold; font-size: 14px;">${selectedApartment.value.aptName}</div>
+      <div style="font-size: 12px;">${priceStats.value.min} 억 ~ ${priceStats.value.max} 억</div>
     </div>
   `;
 
@@ -517,10 +518,24 @@ onMounted(() => {
         </ul>
       </div>
       <div v-if="selectedApartmentDetails.length">
-        <h2>{{ selectedApartment.aptName }}</h2>
-        <p>
-          <strong>{{ selectedApartment.dongName }}</strong>
-        </p>
+        <div style="display: flex; justify-content: space-around">
+          <div>
+            <h2>{{ selectedApartment.aptName }}</h2>
+            <p>
+              <strong>{{ selectedApartment.dongName }}</strong>
+            </p>
+          </div>
+          <div>
+            <button
+              v-if="user.isLoggedIn"
+              @click="handleJjimToggle"
+              :class="{ active: isJjimmed }"
+              class="jjim-button"
+            >
+              <i :class="isJjimmed ? 'bi bi-heart-fill' : 'bi bi-heart'"></i>
+            </button>
+          </div>
+        </div>
         <div ref="roadViewContainer" class="road-view-container"></div>
         <div v-if="filteredDetails.length" class="price-stats">
           <div class="price-range">
@@ -533,9 +548,6 @@ onMounted(() => {
             </select>
           </div>
         </div>
-        <button v-if="user.isLoggedIn" @click="handleJjimToggle">
-          {{ isJjimmed ? "찜취소" : "찜하기" }}
-        </button>
         <ul class="apartment-details-list">
           <li class="apartment-details-header">
             <span>거래 날짜</span>
@@ -733,20 +745,20 @@ li {
   font-size: 10px;
 }
 
-.info-window {
-  background-color: #ad88c6;
-  text-align: center;
-  padding: 10px;
-  white-space: nowrap;
-  border-radius: 8px;
+button.active {
+  background-color: #d1a7e0;
 }
 
-.info-title {
-  font-weight: bold;
-  font-size: 14px;
+.jjim-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  color: #ad88c6;
+  transition: color 0.3s;
 }
 
-.info-price {
-  font-size: 12px;
+.jjim-button.active {
+  color: #ff6b6b;
 }
 </style>
