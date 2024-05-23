@@ -228,7 +228,7 @@ const submitForm = async () => {
 
   justify-content: center;
   align-items: center;
-  height: 90vh;
+  height: 87vh;
 }
 
 .form-box {
