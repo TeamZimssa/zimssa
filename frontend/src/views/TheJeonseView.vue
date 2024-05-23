@@ -926,7 +926,7 @@ li {
   font-size: 16px;
 }
 
-button.active {
+.jwBtn.active {
   background-color: #d1a7e0;
 }
 

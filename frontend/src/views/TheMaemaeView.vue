@@ -810,10 +810,6 @@ li {
   font-size: 16px;
 }
 
-button.active {
-  background-color: #d1a7e0;
-}
-
 .jjim-button {
   background: none;
   border: none;
