@@ -363,7 +363,7 @@ const displayMarkers = (markersData) => {
   });
 
   const content = `
-    <div style="color: black; background-color: #ad88c6; text-align: center; padding: 10px; white-space: nowrap; border-radius: 8px; margin-bottom:45px;">
+    <div style="color: white; background-color: #ad88c6; text-align: center; padding: 10px; white-space: nowrap; border-radius: 8px; margin-bottom:45px;">
       <div style="font-weight: bold; font-size: 18px;">${selectedApartment.value.aptName}</div>
       <div style="font-size: 14px;">${priceStats.value.min} 억 ~ ${priceStats.value.max} 억</div>
     </div> 

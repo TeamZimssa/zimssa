@@ -601,7 +601,6 @@ onMounted(() => {
           </div>
         </div>
         <div ref="roadViewContainer" class="road-view-container"></div>
-
         <div v-if="dealType === '전세'">
           <div>
             <div class="price-stats">
@@ -850,7 +849,6 @@ li {
 .price-stats {
   display: flex;
   justify-content: space-around;
-  align-items: center;
   padding-bottom: 10px;
 }
 

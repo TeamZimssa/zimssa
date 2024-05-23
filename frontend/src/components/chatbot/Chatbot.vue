@@ -9,22 +9,15 @@
         <div
           v-for="(message, index) in messages"
           :key="index"
-          :class="{ 'user-message': message.isUser, 'bot-message': !message.isUser }"
+          :class="message.isUser ? 'user-message' : 'bot-message'"
         >
-          <div
-            class="message-bubble"
-            :style="{ backgroundColor: message.isUser ? '#E1AFD1' : '#FFE6E6' }"
-          >
+          <div class="message-bubble">
             {{ message.text }}
           </div>
         </div>
       </div>
       <div class="input-area">
-        <input
-          v-model="question"
-          @keyup.enter="sendQuestion"
-          placeholder="Type your question here..."
-        />
+        <input v-model="question" @keyup.enter="sendQuestion" placeholder="질문 입력" />
         <button @click="sendQuestion">Send</button>
       </div>
     </div>
@@ -50,18 +43,25 @@ export default {
     async sendQuestion() {
       if (this.question.trim() === "") return;
 
+      // Keep the last bot message and add the new user message
+      const lastBotMessage = this.messages.find((msg) => !msg.isUser);
+      this.messages = lastBotMessage ? [lastBotMessage] : [];
       this.messages.push({ text: this.question, isUser: true });
+
+      const currentQuestion = this.question;
+      this.question = ""; // Clear the input field immediately
 
       try {
         const response = await axios.post(
           "http://localhost:80/zimssa/api/v1/chat-gpt",
-          this.question,
+          { question: currentQuestion },
           {
             headers: {
               "Content-Type": "application/json",
             },
           }
         );
+        this.question = "";
 
         this.messages.push({ text: response.data, isUser: false });
       } catch (error) {
@@ -78,9 +78,9 @@ export default {
 .chatbot-popup {
   position: fixed;
   bottom: 20px;
-  right: 20px; /* left를 right로 변경 */
+  right: 20px;
   width: 300px;
-  height: 500px; /* 세로로 길게 조정 */
+  height: 500px;
   border: 1px solid #ccc;
   border-radius: 5px;
   background: white;
@@ -119,7 +119,16 @@ export default {
   padding: 8px 12px;
   border-radius: 10px;
   margin-bottom: 5px;
-  color: black; /* 검은색 텍스트로 변경 */
+  max-width: 80%;
+  word-wrap: break-word;
+}
+
+.user-message .message-bubble {
+  background-color: #e1afd1;
+}
+
+.bot-message .message-bubble {
+  background-color: #ffe6e6;
 }
 
 .input-area {
@@ -146,14 +155,14 @@ button {
 }
 
 button:hover {
-  background-color: #5d52a1; /* 약간 더 어두운 색으로 변경 */
+  background-color: #5d52a1;
 }
 
 .open-button {
   z-index: 9999;
   position: fixed;
   bottom: 20px;
-  right: 20px; /* left를 right로 변경 */
+  right: 20px;
   padding: 10px 20px;
   border: none;
   background-color: #7468b6;
@@ -163,6 +172,6 @@ button:hover {
 }
 
 .open-button:hover {
-  background-color: #5d52a1; /* 약간 더 어두운 색으로 변경 */
+  background-color: #5d52a1;
 }
 </style>
